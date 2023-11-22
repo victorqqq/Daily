@@ -1,0 +1,302 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+    xmlns:o="urn:schemas-microsoft-com:office:office"
+    xmlns:w="urn:schemas-microsoft-com:office:word"
+    xmlns="http://www.w3.org/TR/REC-html40">
+    <head><meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <style type="text/css">
+        table  
+        {  
+            border-collapse: collapse;
+            border: none;  
+            width: 100%;  
+        }  
+        td,tr  
+        {  
+            border: solid #CCC 1px;
+            padding:3px;
+            font-size:9pt;
+        } 
+        .codestyle{
+            word-break: break-all;
+            mso-highlight:rgb(252, 252, 252);
+            padding-left: 5px; background-color: rgb(252, 252, 252); border: 1px solid rgb(225, 225, 232);
+        }
+        img {
+            width:100;
+        }
+    </style>
+    <meta name=ProgId content=Word.Document>
+    <meta name=Generator content="Microsoft Word 11">
+    <meta name=Originator content="Microsoft Word 11">
+    <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+    <body><h1>1、1.adb基本命令</h1><div style="margin-left:20px;"><h1>adb学习</h1>
+<h2>常用命令</h2>
+<p>连接设备</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">    adb connect [IP地址]
+    示例：adb connect 192.168.123.68</code></pre></table>
+<p>关闭服务</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">    adb kill-server</code></pre></table>
+<p>安装软件</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb install -r [apk在本地计算机的目录]
+    示例： adb install -r c:/123.apk</code></pre></table>
+<p>卸载软件</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb uninstall [apk包名]
+示例：adb uninstall top.foxhome.dome</code></pre></table>
+<p>cmd获取ROOT读写权限</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb remount</code></pre></table>
+<p>进入shell</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell //即进入Linux命令行</code></pre></table>
+<p>退出shell</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">exit</code></pre></table>
+<p>adb截图</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell screencap -p [设备的保存目录]
+示例： adb shell screencap -p /sdcard/screen.png</code></pre></table>
+<p>启动一个应用</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell am start -n “[apk包名]/[应用活动名]”
+示例：adb shell am start -n “top.foxhome.simplecam/top.foxhome.simplecam.CheckActivity”</code></pre></table>
+<p>启动一个服务</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell am startservice -n “[apk包名]/[应用服务名]”
+示例：adb shell am startservice -n top.foxhome.simplecam/top.foxhome.simplecam.DataService</code></pre></table>
+<p>adb发送broadcas</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell am broadcast -a <广播动作>
+示例：adb shell am broadcast -a android.net.conn.CONNECTIVITY_CHANGE</code></pre></table>
+<p>adb上传文件</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb push [本地计算机文件] [安卓设备文件路径]</code></pre></table>
+<p>adb下载文件</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb pull [安卓设备文件路径] [本地计算机文件]</code></pre></table>
+<p>shell相关操作（与Linux下相同）</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">拷贝文件 cp [要拷贝的文件] [要拷贝到的位置及文件]
+移动文件 mv [要移动的文件] [要移动到的位置及文件名]
+打开文件夹 cd [文件夹路径]
+查看文件文件 cat [文件路径]
+移除文件夹 rm -rf [文件夹路径]
+移除文件 rm [文件路径]
+查看目录下所有文件 ls
+其他相关
+./ 表示当前目录下
+../ 表示上级目录</code></pre></table>
+<p>安卓系统应用目录</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">/system/app</code></pre></table>
+<p>获取操作(当前运行)的acticity</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell dumpsys window | findstr mCurrentFocus</code></pre></table>
+<p>输入文字</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell input text  foxhome.top</code></pre></table>
+<p>模拟按键按下</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb shell input keyevent 66</code></pre></table>
+<p>抓取logcat到本地</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">adb logcat -> E:/logcat.txt</code></pre></table></div><h1>2、2.教程</h1><div style="margin-left:20px;"><p>adb安装：<a href="https://blog.csdn.net/Python_0011/article/details/132040387">https://blog.csdn.net/Python_0011/article/details/132040387</a></p>
+<p>git详细安装：<a href="https://blog.csdn.net/mukes/article/details/115693833">https://blog.csdn.net/mukes/article/details/115693833</a></p>
+<p>adb常用命令：<a href="http://foxhome.top/2020/07/07/43.html">http://foxhome.top/2020/07/07/43.html</a></p>
+<p>git常用命令：<a href="http://foxhome.top/2020/09/08/71.html">http://foxhome.top/2020/09/08/71.html</a></p></div><h1>3、Git学习</h1><div style="margin-left:20px;"><h1>git学习</h1>
+<hr />
+<h2>1.git教程</h2>
+<p>git详细安装：
+<a href="https://blog.csdn.net/mukes/article/details/115693833">https://blog.csdn.net/mukes/article/details/115693833</a>
+廖雪峰-Git教程（新手必学）：
+<a href="https://www.liaoxuefeng.com/wiki/896043488029600/896827951938304">https://www.liaoxuefeng.com/wiki/896043488029600/896827951938304</a></p>
+<hr />
+<p><strong>注意</strong>：千万不要使用Windows自带的记事本编辑任何文本文件。原因是Microsoft开发记事本的团队使用了一个非常弱智的行为来保存UTF-8编码的文件，他们自作聪明地在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题，比如，网页第一行可能会显示一个“?”，明明正确的程序一编译就报语法错误，等等，都是由记事本的弱智行为带来的。</p>
+<hr />
+<p><strong>git工作区的理解</strong>：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">Git管理的文件分为：工作区，版本库，版本库又分为暂存区stage和暂存区分支master(仓库)
+
+工作区>>>>暂存区>>>>仓库
+
+git add把文件从工作区>>>>暂存区，git commit把文件从暂存区>>>>仓库，
+
+git diff查看工作区和暂存区差异，
+
+git diff --cached查看暂存区和仓库差异，
+
+git diff HEAD 查看工作区和仓库的差异，
+
+git add的反向命令git checkout，撤销工作区修改，即把暂存区最新版本转移到工作区，
+
+git commit的反向命令git reset HEAD，就是把仓库最新版本转移到暂存区。</code></pre></table>
+<h2>2.基本命令</h2>
+<hr />
+<p>通过<code>git init <目录名></code>命令把目录变成Git可以管理的仓库：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git init
+Initialized empty Git repository in /Users/michael/learngit/.git/</code></pre></table>
+<hr />
+<p>用命令<code>git add <file></code>告诉Git，把文件添加到仓库：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git add readme.txt</code></pre></table>
+<hr />
+<p>用命令<code>git commit -m <message></code>告诉Git，把文件提交到仓库：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git commit -m "wrote a readme file"
+[master (root-commit) eaadf4e] wrote a readme file
+ 1 file changed, 2 insertions(+)
+ create mode 100644 readme.txt
+------------
+ 简单解释一下git commit命令，-m后面输入的是本次提交的说明，可以输入任意内容，当然最好是有意义的，这样你就能从历史记录里方便地找到改动记录。
+
+嫌麻烦不想输入-m "xxx"行不行？确实有办法可以这么干，但是强烈不建议你这么干，因为输入说明对自己对别人阅读都很重要。实在不想输入说明的童鞋请自行Google，我不告诉你这个参数。
+
+git commit命令执行成功后会告诉你，1 file changed：1个文件被改动（我们新添加的readme.txt文件）；2 insertions：插入了两行内容（readme.txt有两行内容）。</code></pre></table>
+<p><strong><em>注意</em></strong>：
+为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件，比如：
+$ git add file1.txt
+$ git add file2.txt file3.txt
+$ git commit -m "add 3 files."</p>
+<hr />
+<p>用<code>git status</code>命令可以让我们查看仓库当前的状态：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   readme.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")</code></pre></table>
+<hr />
+<p>用<code>git diff</code>命令查看上次怎么修改的：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git diff
+diff --git a/1.txt b/1.txt
+index 8d163b5..6c1b32f 100644
+--- a/1.txt
++++ b/1.txt
+@@ -1,2 +1,4 @@
+ Git is a version control system.
+ git is free software.
++Git is a distributed version control system.
++Git is free software.
+\ No newline at end of file</code></pre></table>
+<hr />
+<p>用<code>git log</code>命令显示从最近到最远的提交日志:</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git log
+commit e1f839c0ff480add7a5ab9f94273a8da1e25b159 (HEAD -> main)
+Author: xiaozhixiang <2942262367@qq.com>
+Date:   Thu Nov 16 11:53:13 2023 +0800
+    提交了一次
+
+commit d94d113102edde5a6c699172ee532841d9faeeb9
+Author: xiaozhixiang <2942262367@qq.com>
+Date:   Thu Nov 16 11:29:56 2023 +0800
+    修改了一次
+</code></pre></table>
+<p>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git log --pretty=oneline
+1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -> master) append GPL
+e475afc93c209a690c39c13a46716e8fa000c366 add distributed
+eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0 wrote a readme file</code></pre></table>
+<hr />
+<p>用<code>git reset --hard HEAD^</code>回退到上一个版本或者使用<code>git reset --hard <commit id></code>定位到任意版本：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git reset --hard HEAD^
+HEAD is now at e1f839c 提交了一次
+
+$ git reset 6e01
+Unstaged changes after reset:
+M       1.txt
+------------
+提示：Git的版本回退速度非常快，因为Git在内部有个指向当前版本的HEAD指针，当你回退版本的时候，Git仅仅是把HEAD从指向append GPL：
+
+┌────┐
+│HEAD│
+└────┘
+   │
+   └──▶ ○ append GPL
+        │
+        ○ add distributed
+        │
+        ○ wrote a readme file
+改为指向add distributed：
+
+┌────┐
+│HEAD│
+└────┘
+   │
+   │    ○ append GPL
+   │    │
+   └──▶ ○ add distributed
+        │
+        ○ wrote a readme file
+然后顺便把工作区的文件更新了。所以你让HEAD指向哪个版本号，你就把当前版本定位在哪。</code></pre></table>
+<hr />
+<p>使用<code>git reflog</code>命令用来记录你的每一次命令,可以查询到每一次操作的<code>commit id</code></p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git reflog
+e1f839c (HEAD -> main) HEAD@{0}: reset: moving to HEAD^
+6e010f1 HEAD@{1}: commit: 第三次修改
+e1f839c (HEAD -> main) HEAD@{2}: commit: 提交了一次
+d94d113 HEAD@{3}: commit (initial): 修改了一次
+</code></pre></table>
+<hr />
+<p><strong>撤销修改</strong>：</p>
+<ul>
+<li>用<code>git checkout -- file</code>可以丢弃工作区的修改：</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git checkout -- readme.txt
+命令git checkout -- readme.txt意思就是，把readme.txt文件在工作区的修改全部撤销，这里有两种情况：
+
+一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+
+一种是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+
+总之，就是让这个文件回到最近一次git commit或git add时的状态。</code></pre></table>
+<ul>
+<li>用<code>git reset HEAD <file></code>可以把暂存区的修改撤销掉（unstage），重新放回工作区：
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git reset HEAD readme.txt
+Unstaged changes after reset:
+M   readme.txt
+git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</code></pre></table></li>
+</ul>
+<hr />
+<p><strong>删除文件：</strong></p>
+<ul>
+<li>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了：
+<table width='100%' class='codestyle'><pre><code class="language-c">$ rm test.txt</code></pre></table></li>
+<li>现在你有两个选择，一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git rm test.txt
+rm 'test.txt'
+
+$ git commit -m "remove test.txt"
+[master d46f35e] remove test.txt
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 test.txt</code></pre></table>
+<ul>
+<li>另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本：
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git checkout -- test.txt</code></pre></table>
+<p>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p></li>
+</ul>
+<p><strong>注意</strong>：<code>rm</code>和<code>git rm</code>的区别</p>
+<ol>
+<li>
+<p>rm命令就是在工作区删文件</p>
+</li>
+<li>
+<p>git rm就是删文件，并且把删文件的修改提交到暂存区</p>
+</li>
+<li>相当于rm删文件后，git add 提交，保存修改</li>
+</ol>
+<hr />
+<h2>3.连接github</h2>
+<p>步骤：
+1.config设置
+设置username和email</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">$ git config --global user.name  "name"//自定义用户名
+$ git config --global user.email "youxiang@qq.com"//用户邮箱</code></pre></table>
+<p>修改</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">git config --global configname configvalue</code></pre></table>
+<p>查询</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">git config --global configname</code></pre></table>
+<p>查询全部</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">git config --list</code></pre></table>
+<p>2.创建SSh KEY
+本地Git仓库和github仓库之间的传输是通过SSH加密传输的，所以需要配置ssh key。
+在用户目录下输入：<code>$ ssh-keygen -t rsa -C "xiaozhixiang@sunniwell.net" </code>
+创建ssh文件夹，成功的话按三次回车就行。再次查看.ssh文件夹时已经有了已经有“id_rsa”，“id_rsa.pub”文件。SSH Key的秘钥对：id_rsa是私钥，不能泄露；id_rsa.pub是公钥，可以公开。
+3.github填写SSH KEY秘钥，github设置里面新建SSH，把刚才id_rsa.pub公钥里的内容复制到上面去。
+4.验证成功
+①验证是否成功，在git bash里输入下面的命令
+<code>$ ssh -T git@github.com</code></p>
+<p>5.github建仓库</p>
+<p>6.根据创建好的Git仓库页面的提示（找自己仓库的提示代码），可以在本地Elegent（自己建的本地仓库）仓库的命令行输入：</p>
+<table width='100%' class='codestyle'><pre><code class="language-c">git remote add origin https://github.com/xu-xiaoya/Elegent.git</code></pre></table>
+<p>这是github远程仓库提示代码的代码。这样就完成了关联远程仓库。</p>
+<p>7.本地内容上传推送
+关联好之后我们就可以把本地库的所有内容推送到远程仓库（也就是Github）上了，通过在Bash输入：
+由于新建的远程仓库是空的，所以要加上-u这个参数
+<code>git push -u origin master</code>
+之后仓库不是空的，就不用加上-u
+<code>git push origin master</code></p></div></body></html>
